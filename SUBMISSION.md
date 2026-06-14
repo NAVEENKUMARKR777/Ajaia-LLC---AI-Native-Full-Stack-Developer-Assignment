@@ -8,8 +8,7 @@
 - [x] `AI_WORKFLOW.md` — AI workflow note (tools, what AI sped up, what was changed/rejected, verification)
 - [x] Automated tests (`tests/`), run via `npm run test`
 - [x] Live product URL — https://ajaia-llc-ai-native-full-stack-deve-pink.vercel.app
-- [ ] Walkthrough video URL (`video-link.txt`) — _add after recording_
-- [ ] Screenshots / demo GIF — _add if setup requires extra steps_
+- [ ] Walkthrough video URL (`video-link.txt`) 
 
 ## Status
 
