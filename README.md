@@ -4,6 +4,14 @@ A small full-stack document editor inspired by Google Docs: create and edit
 rich-text documents, upload `.txt`/`.md` files to turn them into documents,
 and share documents with other users.
 
+## Live Demo
+
+**https://ajaia-llc-ai-native-full-stack-deve-pink.vercel.app**
+
+Login is a mocked account picker (no password) — pick **Alice**, **Bob**, or
+**Carol** from the list. See [Demo accounts](#demo-accounts-mocked-auth) below
+for what each account already has access to, useful for testing sharing.
+
 ## Tech Stack
 
 - **Next.js 14** (App Router, TypeScript) — frontend + API routes in one project

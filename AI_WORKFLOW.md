@@ -41,7 +41,9 @@
   free serverless host with the existing SQLite setup. I corrected this —
   SQLite on serverless platforms (Vercel) doesn't persist across
   requests/instances — and had Prisma switched from SQLite to Postgres
-  (Neon) before deploying, rather than overstating what's deployed.
+  (Neon) before deploying, rather than overstating what's deployed. The app
+  is live at https://ajaia-llc-ai-native-full-stack-deve-pink.vercel.app,
+  backed by a free Neon Postgres database, deployed via the Vercel CLI.
 
 ## How correctness, UX, and reliability were verified
 
