@@ -11,9 +11,12 @@ prioritizing depth on a few flows over broad shallow coverage.
 - **Next.js App Router (single project)**: frontend, API routes, and
   middleware all live together. This avoids standing up a separate backend
   service and keeps deployment to "one Node app."
-- **Prisma + SQLite**: zero external accounts/services needed to run the
-  project. The schema (`User`, `Document`, `Share`) is intentionally small
-  and maps directly onto the three core entities the assignment asks for.
+- **Prisma + Postgres (Neon)**: the schema (`User`, `Document`, `Share`) is
+  intentionally small and maps directly onto the three core entities the
+  assignment asks for. Postgres (rather than SQLite) was chosen so the same
+  database works for both local development and a Vercel deployment, since
+  Vercel's serverless functions have an ephemeral filesystem and can't host a
+  SQLite file.
 - **Tiptap (ProseMirror)**: gives bold/italic/underline/headings/lists out of
   the box with a well-documented React integration, and stores content as
   JSON — easy to persist as a string column and easy to re-render.

@@ -38,10 +38,10 @@
   bumped to that instead of either ignoring the warning or jumping to a
   breaking Next.js 16 upgrade.
 - **Deployment story**: AI's first plan assumed a one-command deploy to a
-  free serverless host. I corrected this — SQLite on serverless platforms
-  (Vercel) doesn't persist across requests/instances — and had the
-  architecture note explicitly call out the Postgres/Turso swap needed for
-  serverless, rather than overstating what's deployed.
+  free serverless host with the existing SQLite setup. I corrected this —
+  SQLite on serverless platforms (Vercel) doesn't persist across
+  requests/instances — and had Prisma switched from SQLite to Postgres
+  (Neon) before deploying, rather than overstating what's deployed.
 
 ## How correctness, UX, and reliability were verified
 

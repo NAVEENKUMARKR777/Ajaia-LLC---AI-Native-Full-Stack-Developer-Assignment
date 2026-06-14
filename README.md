@@ -9,7 +9,7 @@ and share documents with other users.
 - **Next.js 14** (App Router, TypeScript) — frontend + API routes in one project
 - **Tailwind CSS** — styling
 - **Tiptap (ProseMirror)** — rich-text editor
-- **Prisma + SQLite** — persistence (single file, no external services)
+- **Prisma + Postgres** (Neon) — persistence
 - **Vitest** — automated tests
 
 ## Getting Started
@@ -17,12 +17,14 @@ and share documents with other users.
 ### Prerequisites
 
 - Node.js 18+ (tested on Node 24)
+- A Postgres connection string (e.g. a free [Neon](https://neon.tech) database)
 
 ### Setup
 
 ```bash
 npm install
-npx prisma db push     # creates prisma/dev.db with the schema
+cp .env.example .env   # then set DATABASE_URL to your Postgres connection string
+npx prisma db push     # creates the schema in your database
 npm run db:seed         # seeds 3 demo users and sample documents
 npm run dev
 ```
@@ -70,7 +72,7 @@ sides.
   **Shared with Me** (shows who shared it)
 
 ### Persistence & access control
-- SQLite via Prisma (`prisma/dev.db`)
+- Postgres via Prisma
 - `src/lib/access.ts` defines `canView`/`canEdit`/`canManageSharing`: owner or
   shared users can view & edit; only the owner can manage sharing
 - All API routes enforce these checks (401 if not logged in, 403 if no access)
@@ -101,22 +103,10 @@ npm run start
   nested lists, links, images) is not converted.
 - All shared users have the same (edit) permission level — there is no
   separate "view only" role.
-- SQLite is used for simplicity; see `ARCHITECTURE.md` for production
-  persistence notes.
 
 ## Deployment
 
-The app runs entirely on SQLite + Node, so it can be deployed to any Node
-host (Render, Fly.io, Railway, a VPS, etc.):
-
-```bash
-npm install
-npx prisma db push
-npm run db:seed   # optional, for demo data
-npm run build
-npm run start
-```
-
-For a serverless platform (e.g. Vercel), swap the Prisma SQLite datasource
-for a hosted Postgres/Turso database, since serverless filesystems are
-ephemeral — see `ARCHITECTURE.md` for details.
+Deployed on **Vercel**, with a free **Neon Postgres** database (set as the
+`DATABASE_URL` environment variable in the Vercel project). The schema is
+pushed via `npx prisma db push` and seeded via `npm run db:seed` against the
+same connection string.
